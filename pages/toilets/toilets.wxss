@@ -1,0 +1,34 @@
+/* pages/toilets/toilets.wxss */
+@import "../../app.wxss";
+
+.today_flow_container {
+    position: absolute;
+    background-size: cover;
+    /* 背景图片覆盖整个宫格 */
+    background-position: center;
+    left: 0%;
+    top: 10%;
+    width: 100%;
+    height: 30%;
+}
+
+.early_warning {
+    position: absolute;
+    left: 0%;
+    top: 40%;
+    width: 100%;
+    height: 30%;
+}
+
+
+
+.data{
+    position: absolute;
+    background-size: cover;
+    /* 背景图片覆盖整个宫格 */
+    background-position: center;
+    top: 42%;
+    left: 0%;
+    width: 100%;
+    height: 40%;
+}

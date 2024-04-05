@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<!-- 应用于页面 -->
+<image src="../image/主界面.png" mode="aspectFill" class="background"></image>
+<image class="header" src="../image/1.png"/>
+<text class="headertxt">农村五治监管平台</text>
+<text class="title">贵州贵阳\n农村"五治"</text>
+<view class="in">
+<image  src="../image/7.png" mode="scaleToFill"/>
+<navigator url="/pages/home/home"></navigator>
+</view>

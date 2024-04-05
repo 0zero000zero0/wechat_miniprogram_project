@@ -1,0 +1,36 @@
+<!--pages/home/home.wxml-->
+<image src="../image/应用界面.png" class="background" />
+<image class="header" src="../image/1.png" />
+<text class="headertxt">农村五治监管平台</text>
+
+<scroll-view scroll-y="true" class="scroll-container">
+    <view class="grid-container">
+        <view class="grid-item" style="background-image:url('../image/13.png');">
+            <text>照片上传</text>
+        </view>
+        <view class="grid-item" style="background-image:url('../image/13.png');">
+            <text>上传历史</text>
+        </view>
+    </view>
+    <view class="grid-container">
+        <view class="grid-item" style="background-image:url('../image/13.png');">
+            <text>审核记录</text>
+        </view>
+        <view class="grid-item" style="background-image:url('../image/13.png');">
+            <text>反馈</text>
+        </view>
+    </view>
+
+</scroll-view>
+<view class="option" style="left:15%">
+    <image src="../image/3.png" />
+    <navigator url="/pages/home/home" ></navigator>
+</view>
+<view class="option" style="left:44%">
+    <image src="../image/4.png" />
+    <navigator url="/pages/feedback/feedback"></navigator>
+</view>
+<view class="option" style="left:73%">
+    <image src="../image/5.png" />
+    <navigator url="/pages/user/user"></navigator>
+</view>

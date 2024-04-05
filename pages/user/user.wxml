@@ -1,0 +1,39 @@
+<image src="../image/应用界面.png" class="background" />
+<view class="header">
+    <image src="../image/17.png" />
+    <text>个人信息</text>
+</view>
+<view class="info" style="background-image:url('../image/16.png');">
+    <image class="Avatar" src="../image/default_user.png" />
+    <view class="info-container" wx:for="{{user}}" wx:key="id">
+        <text>{{index}} : {{item}}</text>
+    </view>
+    <view style="top:15%;" class="user-item">
+        <image  src="../image/20.png" />
+        <text space="ensp">服      务</text>
+    </view>
+    <view style="top:20%;" class="user-item">
+        <image  src="../image/20.png" />
+        <text space="ensp">监      管</text>
+    </view>
+    <view style="top:25%;" class="user-item">
+        <image  src="../image/20.png" />
+        <text space="ensp">客      服</text>
+    </view>
+    <view style="top:30%;" class="user-item">
+        <image  src="../image/20.png" />
+        <text space="ensp">设      置</text>
+    </view>
+</view>
+<view class="option" style="left:15%">
+    <image src="../image/3.png" />
+    <navigator url="/pages/home/home" ></navigator>
+</view>
+<view class="option" style="left:44%">
+    <image src="../image/4.png" />
+    <navigator url="/pages/feedback/feedback"></navigator>
+</view>
+<view class="option" style="left:73%">
+    <image src="../image/5.png" />
+    <navigator url="/pages/user/user"></navigator>
+</view>

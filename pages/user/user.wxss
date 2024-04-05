@@ -1,0 +1,79 @@
+/* pages/user/user.wxss */
+@import "../../app.wxss";
+
+.header {
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    top: 3%;
+    left: 0%;
+}
+
+.header image {
+    position: absolute;
+    height: 80%;
+    top: 0%;
+    left: 0%;
+}
+
+.header text {
+    position: absolute;
+    top: 5%;
+    color: white;
+    left: 10%;
+    font-size: 24px;
+}
+
+.info {
+    position: absolute;
+    left: 0%;
+    top: 13%;
+    height: 70%;
+    width: 100%;
+    background-size: cover;
+    /* 背景图片覆盖整个宫格 */
+    /* background-position: center; */
+}
+
+.info .Avatar {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 25%;
+    height: 25%;
+}
+
+.info image {
+    height: 100%;
+    width: 100%;
+}
+
+.info .info-container {
+    position: relative;
+    top: 10%;
+    left: 50%;
+    height: 5%;
+    color: #30DEF1;
+}
+
+.user-item {
+    position: relative;
+    left: 10%;
+    height: 10%;
+    width: 80%;
+    text-align: justify;
+    font-size: 24px;
+    border: 1px solid #3EADA5;
+}
+
+.user-item image {
+    height: 100%;
+    width: 100%;
+}
+
+.user-item text {
+    position: absolute;
+    left: 30%;
+    top: 0%;
+    color: #30DEF1;
+}

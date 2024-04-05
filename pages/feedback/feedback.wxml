@@ -1,0 +1,34 @@
+<image src="../image/应用界面.png" class="background" />
+<image class="feedback" src="../image/8.png" />
+<image class="feedback1" src="../image/9.png" />
+<text class="feedback_txt">村民意见反馈中心</text>
+
+
+<scroll-view scroll-y="true" class="scroll-container">
+    <view class="grid-container" style="background-image: url('../image/10.png');">
+        <text class="info">OK</text>
+        <text class="detail">detal</text>
+        <image src="../image/26.png" class='deal' />
+    </view>
+
+    <view class="grid-container" style="background-image: url('../image/10.png');">
+        <text class="info">ok</text>
+        <text class="detail">detal</text>
+        <image src="../image/27.png" class='deal' />
+    </view>
+
+</scroll-view>
+
+
+<view class="option" style="left:15%">
+    <image src="../image/3.png" />
+    <navigator url="/pages/home/home"></navigator>
+</view>
+<view class="option" style="left:44%">
+    <image src="../image/4.png" />
+    <navigator url="/pages/feedback/feedback"></navigator>
+</view>
+<view class="option" style="left:73%">
+    <image src="../image/5.png" />
+    <navigator url="/pages/user/user"></navigator>
+</view>

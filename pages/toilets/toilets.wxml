@@ -1,0 +1,60 @@
+<!--pages/toilets/toilets.wxml-->
+
+<!-- page.wxml -->
+<wxs module="utils">
+    var toFixed = function (num, digits) {
+        return Number(num).toFixed(digits);
+    }
+    module.exports.toFixed = toFixed;
+</wxs>
+
+<view>{{utils.toFixed(num, 2)}}</view>
+
+
+<text>pages/toilets/toilets.wxml</text>
+<image src="../image/应用界面.png" class="background" />
+<image class="title" src="../image//11.png" />
+<text class="title_txt">治厕监管平台</text>
+<view class="today_flow_container" style="background-image: url('../image/12.png');">
+    <text style="position:absolute; color: white;top: 5%;left: 35%;">今年总提交照片数</text>
+    <image src="../image/14.png" style="position:absolute;width: 25%;height: 40%;top: 20%;left: 40%;" />
+    <image src="../image/15.png" style="position:absolute; width: 70%;height: 25%; top: 30%;left: 15%;" />
+    <text style="position:absolute; color: white; top: 30%;left: 35%;font-size: 200%;color: #30DFF2;">{{num}}份</text>
+    <!--  已经处理 -->
+    <text style="position:absolute;  top: 60%;left:20%;font-size: 200%;color: #30DFF2;">{{yes}}</text>
+    <text style="position:absolute; color: white; top: 85%;left: 22%;font-size: 100%;">已核查</text>
+    <!-- 未处理 -->
+    <text style="position:absolute; top: 60%;left: 65%;font-size: 200%;color: #30DFF2;">{{no}}</text>
+    <text style="position:absolute; color: white; top: 85%;left: 67%;font-size: 100%;">未处理</text>
+</view>
+
+<view class="data" style="background-image: url('../image/13.png');">
+    <view style="color: white; position: absolute;left:10%;top: 0%;text-align: center;">
+        <text style="font-size: 200%;">{{no}}</text>
+        <text>\n</text>
+        <text>未处理</text>
+    </view>
+    <view style="color: white; position: absolute;left: 40%;top: 0%;text-align: center;">
+        <text style="font-size: 200%;">{{already}}</text>
+        <text>\n</text>
+        <text>已处理</text>
+    </view>
+    <view style="color: white; position: absolute;left: 75%;top: 0%;text-align: center;">
+        <text style="font-size: 200%;">{{utils.toFixed(1-1.0*not/already,2)}}</text>
+        <text>\n</text>
+        <text>处理率</text>
+    </view>
+
+
+    <view style="color:white;position: absolute;top: 35%;width: 35%;height:45%;left:10%">
+        <image src="../image/25.png" style="position: absolute;top: 0%;left: 5%;width: 90%;height: 90%;" />
+        <text style="position: absolute;top:100%;left:20%; font-size: 200%;">{{ok}}</text>
+    </view>
+
+
+    <view style="color:white;position: absolute;top: 35%;width: 35%;height:45%;;left:55%">
+        <image src="../image/24.png" style="position: absolute;top: 0%;left: 5%;width: 90%;height: 90%;" />
+        <text style="position: absolute;top:100%;left:30%; font-size: 200%;">{{no}}</text>
+    </view>
+
+</view>

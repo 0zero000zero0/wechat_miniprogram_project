@@ -1,0 +1,21 @@
+{
+    "pages": [
+        "pages/feedback/feedback",
+        "pages/index/index",
+        "pages/home/home",
+        "pages/logs/logs",
+        "pages/main/main",
+        "pages/toilets/toilets",
+        "pages/user/user",
+        "pages/photo/photo"
+    ],
+    "window": {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "小智·大治",
+        "navigationBarBackgroundColor": "#011C35"
+    },
+    "style": "v2",
+    "componentFramework": "glass-easel",
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
+}

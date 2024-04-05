@@ -1,0 +1,41 @@
+/* pages/home/home.wxss */
+@import "../../app.wxss";
+
+.scroll-container {
+    height: 70%;
+    width: 100%;
+    top:15%;
+    position: absolute;
+}
+
+.grid-container {
+    padding: 5%;
+    /* margin:1%; */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.grid-item {
+    width: 45%;
+    height: 30vh;
+    /* vh单位表示视口高度的百分比，也可以使用px或者rpx单位 */
+    background-size: cover;
+    /* 背景图片覆盖整个宫格 */
+    background-position: center;
+    /* 背景图片居中显示 */
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    /* align-items: center; */
+}
+
+.grid-item text {
+    position: relative;
+    top: 80%;
+    left: 0%;
+    color: #fff;
+
+    height: 10%;
+    /* 设置文字颜色，根据需要调整 */
+}
