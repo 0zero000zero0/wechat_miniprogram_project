@@ -20,7 +20,6 @@ module.exports = {
 class Photo {
     // 类的静态属性，用于统计各种类型照片的数量
     static countByType = {};
-
     constructor(customerID, photoType, photoYear, path, adminID = null, score = null) {
         this.customerID = customerID; // 照片归属的客户ID
         this.photoType = photoType; // 照片类型

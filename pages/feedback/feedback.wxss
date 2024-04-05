@@ -47,6 +47,7 @@
 }
 
 .grid-container {
+    position: relative;
     background-size: cover;
     background-position: left;
     padding: 5%;
@@ -58,23 +59,23 @@
 
 .grid-container .info{
     position: absolute;
-    top: 4%;
-    left: 8%;
+    top: 0%;
+    left: 2%;
     height: 35%;
     width: 35%;
 }
 .grid-container .detail{
     position: absolute;
-    top: 10%;
-    left: 8%;
+    top: 20%;
+    left: 2%;
     height: 35%;
     width: 35%;
 }
 
 .grid-container .deal{
     position: absolute;
-    top: 0%;
+    top: -10%;
     left: 65%;
-    height: 10%;
-    width: 30%;
+    height: 35%;
+    width: 35%;
 }

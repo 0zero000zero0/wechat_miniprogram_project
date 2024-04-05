@@ -3,18 +3,23 @@
 <image class="feedback1" src="../image/9.png" />
 <text class="feedback_txt">村民意见反馈中心</text>
 
-
 <scroll-view scroll-y="true" class="scroll-container">
-    <view class="grid-container" style="background-image: url('../image/10.png');">
+    <view class="grid-container" style="background-image: url('../image/10.png');" >
         <text class="info">OK</text>
         <text class="detail">detal</text>
-        <image src="../image/26.png" class='deal' />
+        <block>
+        <image wx:if="{{a}}" src="../image/27.png" class='deal'/>
+        <image wx:else src="../image/26.png" class='deal'/>
+        </block>
     </view>
 
     <view class="grid-container" style="background-image: url('../image/10.png');">
         <text class="info">ok</text>
         <text class="detail">detal</text>
-        <image src="../image/27.png" class='deal' />
+        <block>
+        <image wx:if="{{b}}" src="../image/27.png" class='deal'/>
+        <image wx:else src="../image/26.png" class='deal'/>
+        </block>
     </view>
 
 </scroll-view>

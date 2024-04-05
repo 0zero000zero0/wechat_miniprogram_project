@@ -1,12 +1,10 @@
-// pages/feedback/feedback.js
+// pages/chat/chat.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      a:false,
-      b:false
 
   },
 
@@ -16,6 +14,7 @@ Page({
   onLoad(options) {
 
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -11,6 +11,11 @@ Page({
     hasUserInfo: false,
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
+    isLogin:false
+  },
+  login()
+  {
+    this.data.isLogin=true;
   },
   bindViewTap() {
     wx.navigateTo({

@@ -10,7 +10,6 @@
 
 <view>{{utils.toFixed(num, 2)}}</view>
 
-
 <text>pages/toilets/toilets.wxml</text>
 <image src="../image/应用界面.png" class="background" />
 <image class="title" src="../image//11.png" />
@@ -51,10 +50,22 @@
         <text style="position: absolute;top:100%;left:20%; font-size: 200%;">{{ok}}</text>
     </view>
 
-
     <view style="color:white;position: absolute;top: 35%;width: 35%;height:45%;;left:55%">
         <image src="../image/24.png" style="position: absolute;top: 0%;left: 5%;width: 90%;height: 90%;" />
         <text style="position: absolute;top:100%;left:30%; font-size: 200%;">{{no}}</text>
     </view>
 
+</view>
+
+<view class="option" style="left:15%">
+    <image src="../image/3.png" />
+    <navigator url="/pages/home/home"></navigator>
+</view>
+<view class="option" style="left:44%">
+    <image src="../image/4.png" />
+    <navigator url="/pages/feedback/feedback"></navigator>
+</view>
+<view class="option" style="left:73%">
+    <image src="../image/5.png" />
+    <navigator url="/pages/user/user"></navigator>
 </view>

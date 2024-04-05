@@ -1,12 +1,12 @@
 {
     "pages": [
-        "pages/feedback/feedback",
         "pages/index/index",
+        "pages/toilets/toilets",
+        "pages/user/user",
+        "pages/feedback/feedback",
         "pages/home/home",
         "pages/logs/logs",
         "pages/main/main",
-        "pages/toilets/toilets",
-        "pages/user/user",
         "pages/photo/photo"
     ],
     "window": {

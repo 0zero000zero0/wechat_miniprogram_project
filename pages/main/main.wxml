@@ -2,20 +2,28 @@
 <image src="../image/应用界面.png" class="background"/>
 <image class="header" src="../image/1.png"/>
 <text class="headertxt">农村五治监管平台</text>
+
+
 <image class="Managing_toilets" src="../image/2.png" />
 <text class="Managing_toilets_text">治厕平台</text>
+
 
 <image class="Managing_water" src="../image/2.png" />
 <text class="Managing_water_text">治水平台</text>
 
+
 <image class="Managing_wind" src="../image/2.png" />
 <text class="Managing_wind_text">治风平台</text>
+
 
 <image class="Managing_house" src="../image/2.png" />
 <text class="Managing_house_text">治房平台</text>
 
+
 <image class="Managing_rubbish" src="../image/2.png" />
 <text class="Managing_rubbish_text">治垃圾管理</text>
+
+
 <view class="option" style="left:15%">
     <image src="../image/3.png" />
     <navigator url="/pages/home/home" ></navigator>
