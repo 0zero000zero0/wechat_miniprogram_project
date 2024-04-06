@@ -9,7 +9,7 @@
             <image src="../image/28.png" style="position: absolute;width:30%;height:30%;" bind:tap="goToUploadImage" />
             <text>照片上传</text>
         </view>
-        <view class="grid-item" style="background-image:url('../image/13.png');">
+        <!-- <view class="grid-item" style="background-image:url('../image/13.png');">
             <image src="../image/29.png" style="position: absolute;width:30%;height:30%;" />
             <text>上传历史</text>
         </view>
@@ -20,7 +20,7 @@
         </view>
         <view class="grid-item" style="background-image:url('../image/13.png');" bind:tap="feedback">
             <text>反馈</text>
-        </view>
+        </view> -->
     </view>
 
 </scroll-view>

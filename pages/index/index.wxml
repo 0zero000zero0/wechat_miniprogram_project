@@ -5,10 +5,37 @@
 <text class="headertxt">农村五治监管平台</text>
 <text class="title">贵州贵阳\n农村"五治"</text>
 <view class="in">
-    <image src="../image/7.png" mode="scaleToFill"  />
-    <navigator url="/pages/home/home"></navigator>
+    <image src="../image/7.png" mode="scaleToFill" bind:tap="closeTank" />
+    <!-- <navigator url="/pages/home/home"></navigator> -->
 </view>
 
-<view wx:if="{{isLogin}}" style="color: white;position: absolute;top: 50%;left: 50%;">
-    <text class="title">Login</text>
+<!-- 头像昵称基本信息弹框 -->
+<view>
+    <view class="userInfo_tank_bg" bindtap="closeTank" wx:if="{{userInfo_tank}}"></view>
+    <view class="userInfo_tank {{userInfo_tank?'transfromjoin':'transfromout'}}">
+        <view class="tank_title">
+            <text>申请获取您的头像、昵称</text>
+        </view>
+        <view class="tank_content">
+            <text>头像：</text>
+            <button class="avatar_button" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image class="avatar_url" src="{{avatarUrl}}"></image>
+                <view class="pos_photo">
+                    <text class="iconfont icon-paizhao"></text>
+                </view>
+            </button>
+        </view>
+        <view class="tank_content">
+            <text>昵称：</text>
+            <input form-type='submit' bindblur="getNickName" placeholder="请输入昵称" type="nickname" />
+        </view>
+        <view class="confirm_button">
+            <view>
+                <button bindtap="closeTank">拒绝</button>
+            </view>
+            <view>
+                <button bindtap="submit" type="primary">允许</button>
+            </view>
+        </view>
+    </view>
 </view>

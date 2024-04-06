@@ -5,7 +5,7 @@
 </view>
 <view class="info" style="background-image:url('../image/16.png');">
     <image class="Avatar" src="../image/default_user.png" />
-    <view class="info-container" wx:for="{{user}}" wx:key="id">
+    <view class="info-container" wx:for="{{userInfo}}" wx:key="id">
         <text>{{index}} : {{item}}</text>
     </view>
     <view style="top:15%;" class="user-item">

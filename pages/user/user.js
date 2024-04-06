@@ -5,20 +5,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-        user: {
-            "id" : 1,
-            "name": "张三",
-            "addr": "地址",
-            "phone": "15288573028",
-            "scores": 100
-        }
+       
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const userInfo = getApp().globalData.userInfo;
+        this.setData({
+           userInfo:userInfo 
+        })
     },
 
     /**

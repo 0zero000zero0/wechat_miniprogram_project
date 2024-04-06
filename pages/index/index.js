@@ -1,54 +1,139 @@
-// index.js
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
-    },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-    isLogin:false
-  },
-  login()
-  {
-    this.data.isLogin=true;
-  },
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail
-    const { nickName } = this.data.userInfo
-    this.setData({
-      "userInfo.avatarUrl": avatarUrl,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  onInputChange(e) {
-    const nickName = e.detail.value
-    const { avatarUrl } = this.data.userInfo
-    this.setData({
-      "userInfo.nickName": nickName,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
+    onLoad() {},
+    //退出登录
+    quit() {
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+            userInfo: null,
         })
-      }
-    })
-  },
+    },
+    //关闭/打开弹框
+    closeTank(e) {
+        if (!this.data.userInfo_tank) {
+            wx.cloud.database().collection('users')
+                .get()
+                .then(res => {
+                    console.log("用户信息====", res);
+                    if (res.data.length) {
+                        this.setData({
+                            userInfo: res.data[0],
+                            userInfo_tank: false,
+                        })
+                        getApp().globalData.userInfo = res.data[0];
+                        wx.navigateTo({
+                            url: '/pages/home/home',
+                        })
+                    } else {
+                        console.log("还未注册====", res)
+                        this.setData({
+                            userInfo_tank: true
+                        })
+                    }
+                    
+                }).catch(res => {
+                    console.log('编程小石头提醒你请添加user2表')
+                })
+        } else {
+            this.setData({
+                userInfo_tank: false
+            })
+            wx.navigateTo({
+                url: '/pages/home/home',
+            })
+        }
+    },
+    /**
+     * 获取头像
+     */
+    onChooseAvatar(e) {
+        console.log(e);
+        this.setData({
+            avatarUrl: e.detail.avatarUrl
+        })
+    },
+    /**
+     * 获取用户昵称
+     */
+    getNickName(e) {
+        console.log(e);
+        this.setData({
+            nickName: e.detail.value
+        })
+    },
+
+    /**
+     * 提交
+     */
+    submit(e) {
+        if (!this.data.avatarUrl) {
+            return wx.showToast({
+                title: '请选择头像',
+                icon: 'error'
+            })
+        }
+        if (!this.data.nickName) {
+            return wx.showToast({
+                title: '请输入昵称',
+                icon: 'error'
+            })
+        }
+        this.setData({
+            userInfo_tank: false
+        })
+        wx.showLoading({
+            title: '正在注册',
+            mask: 'true'
+        })
+        wx.showToast({
+            title: '注册成功',
+        })
+        let tempPath = this.data.avatarUrl
+        let suffix = /\.[^\.]+$/.exec(tempPath)[0];
+        console.log(suffix);
+        //上传到云存储
+        wx.cloud.uploadFile({
+            cloudPath: 'userimg/' + new Date().getTime() + suffix, //在云端的文件名称
+            filePath: tempPath, // 临时文件路径
+            success: res => {
+                console.log('上传成功', res)
+                let fileID = res.fileID
+                wx.hideLoading()
+                wx.cloud.database().collection('users')
+                    .add({
+                        data: {
+                            avatarUrl: fileID,
+                            nickName: this.data.nickName
+                        }
+                    }).then(res => {
+                        let user = {
+                            avatarUrl: fileID,
+                            nickName: this.data.nickName
+                        }
+                        // 注册成功
+                        console.log('注册成功')
+                        this.setData({
+                            userInfo: user,
+                        })
+                        wx.navigateTo({
+                            url: '/pages/home/home',
+                        })
+                    }).catch(res => {
+                        console.log('注册失败', res)
+                        wx.showToast({
+                            icon: 'error',
+                            title: '注册失败',
+                        })
+                    })
+
+            },
+            fail: err => {
+                wx.hideLoading()
+                console.log('上传失败', res)
+                wx.showToast({
+                    icon: 'error',
+                    title: '上传头像错误',
+                })
+            }
+        })
+
+    },
 })
