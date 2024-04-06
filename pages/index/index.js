@@ -28,17 +28,13 @@ Page({
                             userInfo_tank: true
                         })
                     }
-                    
-                }).catch(res => {
-                    console.log('编程小石头提醒你请添加user2表')
+
                 })
         } else {
             this.setData({
                 userInfo_tank: false
             })
-            wx.navigateTo({
-                url: '/pages/home/home',
-            })
+            
         }
     },
     /**
@@ -59,6 +55,13 @@ Page({
             nickName: e.detail.value
         })
     },
+    getAddr(e)
+    {
+        console.log(e);
+        this.setData({
+            addr:e.detail.value
+        })
+    },
 
     /**
      * 提交
@@ -73,6 +76,12 @@ Page({
         if (!this.data.nickName) {
             return wx.showToast({
                 title: '请输入昵称',
+                icon: 'error'
+            })
+        }
+        if (!this.data.addr) {
+            return wx.showToast({
+                title: '请输入地址',
                 icon: 'error'
             })
         }
@@ -91,7 +100,7 @@ Page({
         console.log(suffix);
         //上传到云存储
         wx.cloud.uploadFile({
-            cloudPath: 'userimg/' + new Date().getTime() + suffix, //在云端的文件名称
+            cloudPath: 'user/' + new Date().getTime() + suffix, //头像在云端的文件名称
             filePath: tempPath, // 临时文件路径
             success: res => {
                 console.log('上传成功', res)
@@ -101,12 +110,14 @@ Page({
                     .add({
                         data: {
                             avatarUrl: fileID,
-                            nickName: this.data.nickName
+                            nickName: this.data.nickName,
+                            addr: this.data.addr
                         }
                     }).then(res => {
                         let user = {
                             avatarUrl: fileID,
-                            nickName: this.data.nickName
+                            nickName: this.data.nickName,
+                            addr: this.data.addr
                         }
                         // 注册成功
                         console.log('注册成功')

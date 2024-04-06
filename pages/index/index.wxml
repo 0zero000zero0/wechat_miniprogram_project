@@ -14,7 +14,7 @@
     <view class="userInfo_tank_bg" bindtap="closeTank" wx:if="{{userInfo_tank}}"></view>
     <view class="userInfo_tank {{userInfo_tank?'transfromjoin':'transfromout'}}">
         <view class="tank_title">
-            <text>申请获取您的头像、昵称</text>
+            <text>注册</text>
         </view>
         <view class="tank_content">
             <text>头像：</text>
@@ -29,12 +29,16 @@
             <text>昵称：</text>
             <input form-type='submit' bindblur="getNickName" placeholder="请输入昵称" type="nickname" />
         </view>
+        <view class="tank_content">
+            <text>地址：</text>
+            <input form-type='submit'bindblur="getAddr"  placeholder="请输入地址" type="nickname" />
+        </view>
         <view class="confirm_button">
             <view>
                 <button bindtap="closeTank">拒绝</button>
             </view>
             <view>
-                <button bindtap="submit" type="primary">允许</button>
+                <button bindtap="submit" type="primary">提交</button>
             </view>
         </view>
     </view>

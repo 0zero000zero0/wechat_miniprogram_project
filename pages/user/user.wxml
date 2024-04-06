@@ -5,29 +5,37 @@
 </view>
 <view class="info" style="background-image:url('../image/16.png');">
     <image class="Avatar" src="../image/default_user.png" />
-    <view class="info-container" wx:for="{{userInfo}}" wx:key="id">
-        <text>{{index}} : {{item}}</text>
+    <view class='info-container'>
+        <text>姓名:  {{userInfo.nickName}}\n</text>
+        <text>地址:  {{userInfo.addr}}\n</text>
     </view>
-    <view style="top:15%;" class="user-item">
-        <image  src="../image/20.png" />
-        <text space="ensp">服      务</text>
-    </view>
-    <view style="top:20%;" class="user-item">
-        <image  src="../image/20.png" />
-        <text space="ensp">监      管</text>
-    </view>
-    <view style="top:25%;" class="user-item">
-        <image  src="../image/20.png" />
-        <text space="ensp">客      服</text>
-    </view>
-    <view style="top:30%;" class="user-item">
-        <image  src="../image/20.png" />
-        <text space="ensp">设      置</text>
-    </view>
+
+    <scroll-view scroll-y="true" class="user-option">
+        <view  class="user-item">
+            <image src="../image/20.png" />
+            <text>服 务</text>
+        </view>
+
+        <view  class="user-item">
+            <image src="../image/20.png" />
+            <text>监 管</text>
+        </view>
+
+        <view  class="user-item">
+            <image src="../image/20.png" />
+            <text>客 服</text>
+        </view>
+
+        <view  class="user-item">
+            <image src="../image/20.png" />
+            <text>设 置</text>
+        </view>
+    </scroll-view>
+
 </view>
 <view class="option" style="left:15%">
     <image src="../image/3.png" />
-    <navigator url="/pages/home/home" ></navigator>
+    <navigator url="/pages/home/home"></navigator>
 </view>
 <view class="option" style="left:44%">
     <image src="../image/4.png" />
