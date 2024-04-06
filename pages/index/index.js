@@ -19,9 +19,9 @@ Page({
                             userInfo_tank: false,
                         })
                         getApp().globalData.userInfo = res.data[0];
-                        wx.navigateTo({
-                            url: '/pages/home/home',
-                        })
+                        wx.reLaunch({
+                            url: '/pages/home/home'
+                          });
                     } else {
                         console.log("还未注册====", res)
                         this.setData({
@@ -124,9 +124,10 @@ Page({
                         this.setData({
                             userInfo: user,
                         })
-                        wx.navigateTo({
-                            url: '/pages/home/home',
-                        })
+                        get().globalData.userInfo=user
+                        wx.reLaunch({
+                            url: '/pages/home/home'
+                          });
                     }).catch(res => {
                         console.log('注册失败', res)
                         wx.showToast({

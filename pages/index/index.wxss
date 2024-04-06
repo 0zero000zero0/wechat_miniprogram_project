@@ -63,34 +63,23 @@ page {
     flex: 1;
 }
 
-
-
-
-
-
 .title {
     position: absolute;
-    left: 10px;
-    top: 141px;
-    width: 430px;
-    height: 153px;
-    opacity: 1;
-    /** 文本1 */
-    font-size: 60px;
-    font-weight: 900;
-    letter-spacing: 10px;
-    line-height: 71px;
+    top: 20%;
+    left: 5%;
+    height: 40%;
+    width: 85%;
+    font-size: 400%;
     color: rgba(206, 209, 219, 1);
-    text-align: left;
-    vertical-align: top;
+    font:  sans-serif;
 }
 
 .in {
     position: absolute;
-    left: 10px;
-    top: 400px;
-    width: 360px;
-    height: 99px;
+    top: 70%;
+    left: 5%;
+    height: 15%;
+    width: 90%;
     opacity: 1;
 }
 .in navigator{

@@ -20,20 +20,19 @@ Page({
             title: '上传中...',
         });
         const db = wx.cloud.database(); // 获取云数据库实例
+        const userId = getApp().globalData.userInfo._id; // 获取用户ID
+        console.log(userId)
         // 使用Promise.all来等待所有图片上传操作完成
         const uploadPromises = this.data.imageList.map((imgSrc, index) => {
             const currentTime = new Date();
-            const imageName = currentTime.getFullYear() + "-" +
-                (currentTime.getMonth() + 1).toString().padStart(2, '0') + "-" +
-                currentTime.getDate().toString().padStart(2, '0') + "-" +
-                currentTime.getHours().toString().padStart(2, '0') + "-" +
-                currentTime.getMinutes().toString().padStart(2, '0') + "-" +
-                currentTime.getSeconds().toString().padStart(2, '0') + "-" + String(index);
+            // 构造文件名时加入用户ID和时间（年月）
+            const imageName = `${userId}/${currentTime.getFullYear()}_${(currentTime.getMonth() + 1).toString().padStart(2, '0')}/${currentTime.getFullYear()}-${(currentTime.getMonth() + 1).toString().padStart(2, '0')}-${currentTime.getDate().toString().padStart(2, '0')}-${currentTime.getHours().toString().padStart(2, '0')}-${currentTime.getMinutes().toString().padStart(2, '0')}-${currentTime.getSeconds().toString().padStart(2, '0')}-${String(index)}.png`;
             return wx.cloud.uploadFile({
-                cloudPath: `images/${imageName}.png`, //上传到云端的图片名字
-                filePath: imgSrc, //本地文件路径
+                cloudPath: imageName, // 上传到云端的图片路径
+                filePath: imgSrc, // 本地文件路径
             });
         });
+
         Promise.all(uploadPromises).then(res => {
             // 所有图片上传成功
             const fileIDs = res.map(uploadResult => uploadResult.fileID); // 获取所有图片的云文件ID
@@ -47,12 +46,12 @@ Page({
             }).then(() => {
                 wx.hideLoading();
                 wx.showToast({
-                    title: '图片及信息上传成功',
+                    title: '图片上传成功',
                     icon: 'success',
                     complete: () => {
                         setTimeout(() => {
                             wx.navigateBack();
-                        }, 2000);
+                        }, 500);
                     }
                 });
             }).catch(error => {

@@ -4,10 +4,10 @@
     <text>个人信息</text>
 </view>
 <view class="info" style="background-image:url('../image/16.png');">
-    <image class="Avatar" src="../image/default_user.png" />
+    <image class="Avatar" src="{{userInfo.avatarUrl}}" />
     <view class='info-container'>
-        <text>姓名:  {{userInfo.nickName}}\n</text>
-        <text>地址:  {{userInfo.addr}}\n</text>
+        <text>姓名:  {{userInfo.nickName}}</text>
+        <text>地址:  {{userInfo.addr}}</text>
     </view>
 
     <scroll-view scroll-y="true" class="user-option">

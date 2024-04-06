@@ -4,21 +4,22 @@
 .scroll-container {
     height: 70%;
     width: 100%;
-    top:15%;
+    top: 15%;
     position: absolute;
 }
 
 .grid-container {
     padding: 5%;
     /* margin:1%; */
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .grid-item {
+    position: relative;
     width: 45%;
-    height: 30vh;
+    height: 25vh;
     /* vh单位表示视口高度的百分比，也可以使用px或者rpx单位 */
     background-size: cover;
     /* 背景图片覆盖整个宫格 */
@@ -28,14 +29,38 @@
     justify-content: center;
     text-align: left;
     /* align-items: center; */
+
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    /* 垂直排列子元素 */
+    align-items: center;
+    /* 水平居中对齐子元素 */
+    text-align: center;
+    width: 45%;
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.grid-item image {
+    width: 100%;
+    /* 图片宽度占满容器 */
+    height: 80%;
+    /* 图片高度占容器的大部分 */
+    object-fit: cover;
+    /* 保证图片覆盖整个区域 */
 }
 
 .grid-item text {
-    position: relative;
-    top: 80%;
-    left: 0%;
+    width: 100%;
+    /* 文字宽度占满容器 */
     color: #fff;
-
-    height: 10%;
-    /* 设置文字颜色，根据需要调整 */
+    flex-grow: 1;
+    /* 允许文字占据剩余的空间 */
+    padding: 5% 0;
+    /* 根据需要调整，为文字提供一些内边距 */
 }

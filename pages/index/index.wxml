@@ -3,7 +3,7 @@
 <image src="../image/主界面.png" mode="aspectFill" class="background"></image>
 <image class="header" src="../image/1.png" />
 <text class="headertxt">农村五治监管平台</text>
-<text class="title">贵州贵阳\n农村"五治"</text>
+<text class="title">贵州贵阳农村"五治"</text>
 <view class="in">
     <image src="../image/7.png" mode="scaleToFill" bind:tap="closeTank" />
     <!-- <navigator url="/pages/home/home"></navigator> -->
@@ -31,7 +31,7 @@
         </view>
         <view class="tank_content">
             <text>地址：</text>
-            <input form-type='submit'bindblur="getAddr"  placeholder="请输入地址" type="nickname" />
+            <input form-type='submit' bindblur="getAddr" placeholder="请输入地址"  />
         </view>
         <view class="confirm_button">
             <view>

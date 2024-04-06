@@ -5,12 +5,9 @@ App({
         const logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
-    
-
         wx.cloud.init({
             env: 'cloud1-8gxg6sk4ed3ac923'
         })
-
         // 登录
         wx.login({
             success: res => {

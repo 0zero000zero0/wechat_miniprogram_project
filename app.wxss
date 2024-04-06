@@ -40,9 +40,9 @@
 
 .option {
     position: absolute;
-    top: 82%;
-    width: 13%;
-    height: 13%;
+    top: 80%;
+    width: 15%;
+    height: 15%;
     opacity: 1;
 }
 
