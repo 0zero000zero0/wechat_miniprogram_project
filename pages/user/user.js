@@ -1,11 +1,12 @@
 // pages/user/user.js
+const app = getApp(); // 获取App实例
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-       
+        pageId: 'user'
     },
 
     /**
@@ -14,10 +15,13 @@ Page({
     onLoad(options) {
         const userInfo = getApp().globalData.userInfo;
         this.setData({
-           userInfo:userInfo 
+            userInfo: userInfo
         })
     },
-
+    handleNavigate: function (e) {
+        const targetPageId = e.currentTarget.dataset.pageid; // 假设通过data-pageid传入目标页面ID
+        app.navigateToPage(targetPageId); // 调用全局跳转方法
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

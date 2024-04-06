@@ -26,15 +26,15 @@
     </view>
 
 </scroll-view>
-<view class="option" style="left:15%">
-    <image src="../image/3.png" />
-    <navigator url="/pages/home/home"></navigator>
+
+
+<view class="option" style="left:12%">
+    <image src="../image/3.png" bind:tap="handleNavigate" data-pageid="home"/>
+
 </view>
-<view class="option" style="left:44%">
-    <image src="../image/4.png" />
-    <navigator url="/pages/feedback/feedback"></navigator>
+<view class="option" style="left:42%">
+    <image src="../image/4.png" bind:tap="handleNavigate" data-pageid="feedback"/>
 </view>
-<view class="option" style="left:73%">
-    <image src="../image/5.png" />
-    <navigator url="/pages/user/user"></navigator>
+<view class="option" style="left:72%">
+    <image src="../image/5.png" bind:tap="handleNavigate" data-pageid="user"/>
 </view>

@@ -1,4 +1,5 @@
 // pages/home/home.js
+const app = getApp(); // 获取App实例
 Page({
 
     /**
@@ -6,12 +7,18 @@ Page({
      */
     data: {
         uploadedImages: [],
+        pageId:'home'
     },
     feedback() {
         wx.navigateTo({
             url: '/pages/feedback/feedback',
         })
     },
+    handleNavigate: function(e) {
+        const targetPageId = e.currentTarget.dataset.pageid; // 假设通过data-pageid传入目标页面ID
+        console.info(targetPageId)
+        app.navigateToPage(targetPageId); // 调用全局跳转方法
+      },
     // 发起跳转的页面代码片段
     goToUploadImage() {
         wx.chooseMedia({

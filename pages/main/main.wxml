@@ -23,16 +23,14 @@
 <image class="Managing_rubbish" src="../image/2.png" />
 <text class="Managing_rubbish_text">治垃圾管理</text>
 
-
-<view class="option" style="left:15%">
-    <image src="../image/3.png" />
-    <navigator url="/pages/home/home" ></navigator>
+<view class="option" style="left:12%">
+    <image src="../image/3.png" data-pageid="home" bind:tap="handleNavigate" />
 </view>
-<view class="option" style="left:44%">
+<view class="option" style="left:42%">
     <image src="../image/4.png" />
-    <navigator url="/pages/feedback/feedback"></navigator>
+    <image src="../image/3.png" data-pageid="feedback" bind:tap="handleNavigate" />
 </view>
-<view class="option" style="left:73%">
+<view class="option" style="left:72%">
     <image src="../image/5.png" />
-    <navigator url="/pages/user/user"></navigator>
+    <image src="../image/3.png" data-pageid="user" bind:tap="handleNavigate" />
 </view>

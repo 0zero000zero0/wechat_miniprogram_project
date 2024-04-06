@@ -1,6 +1,7 @@
 Page({
     data: {
         imageList: [] // 保存选中的图片
+        ,pageId:'uploadImage'
     },
     onLoad: function (option) {
         const eventChannel = this.getOpenerEventChannel();
@@ -30,6 +31,7 @@ Page({
             return wx.cloud.uploadFile({
                 cloudPath: imageName, // 上传到云端的图片路径
                 filePath: imgSrc, // 本地文件路径
+
             });
         });
 
