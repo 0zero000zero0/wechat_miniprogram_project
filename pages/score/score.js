@@ -4,7 +4,8 @@ Page({
     data: {
         pageId: 'score',
         show: false,
-        imagesToRate: []
+        imagesToRate: [],
+        RatedImages: []
     },
     handleNavigate: function (e) {
         const targetPageId = e.currentTarget.dataset.pageid; // 假设通过data-pageid传入目标页面ID
@@ -65,24 +66,24 @@ Page({
         });
     },
     inputScore: function (event) {
-        const fileID = event.currentTarget.dataset.imageId; // 获取图片ID
-        const score = event.detail.value; // 获取用户输入的评分
-        // 找到对应的图片并更新评分
-        let images = this.data.imagesToRate.map(item => {
-            if (item._id === fileID) {
-                item.score = score; // 更新评分
+        let score = event.detail.value; // 获取输入的评分
+        let imageId = event.currentTarget.dataset.imageId; // 获取图片ID
+        let imagesToRate = this.data.imagesToRate.map(image => {
+            if (image._id === imageId) {
+                image.score = Number(score); // 更新评分
             }
-            return item;
+            return image;
         });
         this.setData({
-            imagesToRate: images
-        });
+            imagesToRate
+        }); // 更新数据
     },
+
+
     submitScore: function (event) {
         const db = wx.cloud.database(); // 获取数据库引用
         const fileID = event.currentTarget.dataset.imageId; // 获取图片ID
         const image = this.data.imagesToRate.find(item => item._id === fileID); // 查找对应的图片对象
-
         if (image) {
             // 更新数据库中的评分
             db.collection('images').doc(fileID).update({
@@ -93,7 +94,6 @@ Page({
                 wx.showToast({
                     title: '评分成功',
                 });
-
                 // 重新查询未评分的图片
                 this.showImage({
                     currentTarget: {
@@ -106,6 +106,38 @@ Page({
                 console.error(err);
             });
         }
+    },
+
+
+    submitAllScores: function () {
+        const db = wx.cloud.database();
+        const _ = db.command;
+        let updatePromises = [];
+
+        this.data.imagesToRate.forEach(image => {
+            if (image.score >= 0) { // 确保已经输入评分
+                updatePromises.push(db.collection('images').doc(image._id).update({
+                    data: {
+                        score: image.score
+                    }
+                }));
+            }
+        });
+
+        Promise.all(updatePromises).then(() => {
+            wx.showToast({
+                title: '评分提交成功',
+            });
+            this.showImage({
+                currentTarget: {
+                    dataset: {
+                        type: 'notalready'
+                    }
+                }
+            }); // 重新查询未评分的图片
+        }).catch(err => {
+            console.error('提交评分失败', err);
+        });
     },
 
 

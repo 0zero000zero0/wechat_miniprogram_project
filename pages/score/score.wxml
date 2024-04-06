@@ -13,10 +13,9 @@
 <scroll-view scroll-x="true" class="score-container" wx:if="{{show}}">
     <block wx:for="{{imagesToRate}}" wx:key="fileID">
         <view class="image-item">
-            <image src="{{item.fileID}}" mode="aspectFit" />
-            <input type="text" placeholder="请输入评分" data-image-id="{{item._id}}" bindinput="inputScore" />
-<button data-image-id="{{item._id}}" bindtap="submitScore">提交评分</button>
-
+            <image src="{{item.fileID}}" />
+            <input type="number" min="0" max="100" placeholder="请输入评分" data-image-id="{{item._id}}" value="{{item.score !== -1 ? item.score : ''}}" bindinput="inputScore" />
         </view>
     </block>
 </scroll-view>
+<button bindtap="submitAllScores" type="primary" class="submitAll">提交所有评分</button>

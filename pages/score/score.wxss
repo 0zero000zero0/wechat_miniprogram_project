@@ -23,16 +23,51 @@
     margin-left: 5%;
     /* 选项之间的间距 */
 }
-.score-container{
-    position:relative;
+
+.score-container {
+    position: relative;
     top: 10%;
     left: 5%;
     height: 80%;
 }
-.image-item{
+
+.image-item {
+    color: white;
+    display: flex;
+    /* 使用 Flex 布局 */
+    flex-direction: column;
+    /* 子元素垂直排列 */
+    align-items: center;
+    /* 子元素水平居中 */
+    justify-content: center;
+    /* 子元素垂直居中 */
     height: 40%;
-    width: 100%;
+    /* width: 100%; */
+    margin-bottom: 5%;
+    margin-right: 10%;
 }
+
+.image-item image {
+    width: 60%;
+    /* 图片宽度为容器宽度的 80% */
+    height: 30vh;
+    /* 高度自适应，保持图片比例 */
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /* 图片与输入框之间的间隔 */
+}
+
+.image-item input {
+    text-align: center;
+    font-size: 150%;
+   text-emphasis-color: white; 
+    width: 60%;
+    /* 输入框宽度 */
+    height: 15%;
+    /* 输入框高度，根据需要调整 */
+}
+
+
 .score-option text {
     font-size: 5vw;
     /* 根据容器宽度的百分比来设置字体大小 */
@@ -42,4 +77,11 @@
     /* 文字居中 */
     width: 100%;
     /* 文字占据整个选项宽度 */
+}
+
+.submitAll
+{
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
 }
