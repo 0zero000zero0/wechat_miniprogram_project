@@ -1,0 +1,11 @@
+<image src="../image/应用界面.png" class="background" />
+<view class="header">
+    <image src="../image/1.png" class="header-img" />
+    <text class="headertxt">上传图片</text>
+</view>
+<scroll-view scroll-y="true" class="preview-container">
+    <block wx:for="{{imageList}}" wx:key="*this">
+        <image src="{{item}}" class="preview-img"></image>
+    </block>
+</scroll-view>
+<button class="submit-btn" type="primary" bindtap="submitImages">提交</button>

@@ -6,7 +6,7 @@
 <scroll-view scroll-y="true" class="scroll-container">
     <view class="grid-container">
         <view class="grid-item" style="background-image:url('../image/13.png');">
-            <image src="../image/28.png" style="position: absolute;width:30%;height:30%;" />
+            <image src="../image/28.png" style="position: absolute;width:30%;height:30%;" bind:tap="goToUploadImage" />
             <text>照片上传</text>
         </view>
         <view class="grid-item" style="background-image:url('../image/13.png');">
@@ -18,7 +18,7 @@
         <view class="grid-item" style="background-image:url('../image/13.png');">
             <text>审核记录</text>
         </view>
-        <view class="grid-item" style="background-image:url('../image/13.png');">
+        <view class="grid-item" style="background-image:url('../image/13.png');" bind:tap="feedback">
             <text>反馈</text>
         </view>
     </view>

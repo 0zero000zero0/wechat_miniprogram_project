@@ -7,8 +7,10 @@
         "pages/home/home",
         "pages/logs/logs",
         "pages/main/main",
+        "pages/uploadImage/uploadImage",
         "pages/photo/photo"
     ],
+    
     "window": {
         "navigationBarTextStyle": "white",
         "navigationBarTitleText": "小智·大治",

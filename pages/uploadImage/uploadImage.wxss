@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.header {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.header-img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 50%;
+
+}
+
+.headertxt {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    width: 100%;
+    height: 70%;
+}
+
+.preview-container {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    height: 70%;
+    width: 100%;
+    /* 根据需要调整 */
+    margin-top: 20px;
+}
+
+.preview-img {
+    position: relative;
+    height: 30%;
+    width: 40%;
+    margin-right: 10%;
+    margin-top: 10%;
+}
+
+.submit-btn {
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+    margin-top: 20px;
+}
