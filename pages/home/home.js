@@ -9,11 +9,7 @@ Page({
         uploadedImages: [],
         pageId:'home'
     },
-    feedback() {
-        wx.navigateTo({
-            url: '/pages/feedback/feedback',
-        })
-    },
+
     handleNavigate: function(e) {
         const targetPageId = e.currentTarget.dataset.pageid; // 假设通过data-pageid传入目标页面ID
         console.info(targetPageId)

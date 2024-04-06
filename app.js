@@ -23,12 +23,11 @@ App({
         const pageMap = {
           home: '/pages/home/home',
           feedback: '/pages/feedback/feedback',
-          user: '/pages/user/user'
+          user: '/pages/user/user',
+          score:'/pages/score/score'
         };
         const currentPage = getCurrentPages().pop(); // 获取当前页面实例
         const currentPageId = currentPage.data.pageId; // 每个页面data中都有pageId来标识页面
-        console.info(currentPage)
-        console.info(currentPageId)
         if (currentPageId === targetPageId) {
           console.log('Already on the target page.');
           return; // 如果目标页面就是当前页面，则不进行跳转

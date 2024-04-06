@@ -1,7 +1,7 @@
 Page({
     data: {
-        imageList: [] // 保存选中的图片
-        ,pageId:'uploadImage'
+        imageList: [], // 保存选中的图片
+        pageId: 'uploadImage'
     },
     onLoad: function (option) {
         const eventChannel = this.getOpenerEventChannel();
@@ -31,21 +31,29 @@ Page({
             return wx.cloud.uploadFile({
                 cloudPath: imageName, // 上传到云端的图片路径
                 filePath: imgSrc, // 本地文件路径
-
             });
         });
+
 
         Promise.all(uploadPromises).then(res => {
             // 所有图片上传成功
             const fileIDs = res.map(uploadResult => uploadResult.fileID); // 获取所有图片的云文件ID
-            console.info(fileIDs)
-            // 创建数据库记录
-            db.collection('images').add({
-                data: {
-                    fileIDs: fileIDs,
-                    createTime: db.serverDate() // 记录创建时间
-                }
-            }).then(() => {
+            debugger
+            // 对每个文件创建单独记录
+            const uploadTasks = fileIDs.map(fileID => {
+                return db.collection('images').add({
+                    data: {
+                        fileID: fileID,
+                        customerId: userId, // 使用前面获取的用户ID
+                        score: -1, // 默认分数为-1
+                        adminId: "" // 默认打分管理员为空
+                    }
+                });
+            });
+
+            // 等待所有上传任务完成
+            Promise.all(uploadTasks).then(() => {
+                console.log('所有图片记录已创建');
                 wx.hideLoading();
                 wx.showToast({
                     title: '图片上传成功',
@@ -55,9 +63,8 @@ Page({
                             wx.navigateBack();
                         }, 500);
                     }
-                });
+                })
             }).catch(error => {
-                // 处理添加记录失败的情况
                 wx.hideLoading();
                 wx.showToast({
                     title: '上传失败，请重试',
@@ -65,20 +72,14 @@ Page({
                 });
                 console.error("添加数据库记录失败：", error);
             });
-
         }).catch(error => {
-            // 处理图片上传失败的情况
-            wx.hideLoading();
-            wx.showToast({
-                title: '上传失败，请重试',
-                icon: 'none'
-            });
-            console.error("上传图片失败：", error);
+            console.error('上传图片失败', error);
         });
+
+
         // 清空imageList
         this.setData({
             imageList: []
         });
     }
-
 });

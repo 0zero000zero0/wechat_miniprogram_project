@@ -27,23 +27,11 @@
     /* 背景图片居中显示 */
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: left;
     /* align-items: center; */
-
-}
-
-.grid-item {
-    display: flex;
     flex-direction: column;
-    /* 垂直排列子元素 */
-    align-items: center;
-    /* 水平居中对齐子元素 */
-    text-align: center;
-    width: 45%;
-    height: 25vh;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+    display: flex;
 }
 
 .grid-item image {
@@ -61,6 +49,6 @@
     color: #fff;
     flex-grow: 1;
     /* 允许文字占据剩余的空间 */
-    padding: 5% 0;
+    padding: 5% ;
     /* 根据需要调整，为文字提供一些内边距 */
 }

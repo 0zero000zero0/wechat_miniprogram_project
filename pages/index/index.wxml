@@ -31,8 +31,11 @@
         </view>
         <view class="tank_content">
             <text>地址：</text>
-            <input form-type='submit' bindblur="getAddr" placeholder="请输入地址"  />
+            <input form-type='submit' bindblur="getAddr" placeholder="请输入地址" />
         </view>
+        <picker-view>
+            
+        </picker-view>
         <view class="confirm_button">
             <view>
                 <button bindtap="closeTank">拒绝</button>

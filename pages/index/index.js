@@ -9,6 +9,7 @@ Page({
     //关闭/打开弹框
     closeTank(e) {
         if (!this.data.userInfo_tank) {
+            //弹出注册框
             wx.cloud.database().collection('users')
                 .get()
                 .then(res => {
@@ -21,7 +22,7 @@ Page({
                         getApp().globalData.userInfo = res.data[0];
                         wx.reLaunch({
                             url: '/pages/home/home'
-                          });
+                        });
                     } else {
                         console.log("还未注册====", res)
                         this.setData({
@@ -34,7 +35,7 @@ Page({
             this.setData({
                 userInfo_tank: false
             })
-            
+
         }
     },
     /**
@@ -55,11 +56,10 @@ Page({
             nickName: e.detail.value
         })
     },
-    getAddr(e)
-    {
+    getAddr(e) {
         console.log(e);
         this.setData({
-            addr:e.detail.value
+            addr: e.detail.value
         })
     },
 
@@ -111,7 +111,8 @@ Page({
                         data: {
                             avatarUrl: fileID,
                             nickName: this.data.nickName,
-                            addr: this.data.addr
+                            addr: this.data.addr,
+                            isAdmin: false
                         }
                     }).then(res => {
                         let user = {
@@ -124,18 +125,11 @@ Page({
                         this.setData({
                             userInfo: user,
                         })
-                        get().globalData.userInfo=user
                         wx.reLaunch({
                             url: '/pages/home/home'
-                          });
-                    }).catch(res => {
-                        console.log('注册失败', res)
-                        wx.showToast({
-                            icon: 'error',
-                            title: '注册失败',
-                        })
+                        });
+                        get().globalData.userInfo = user
                     })
-
             },
             fail: err => {
                 wx.hideLoading()

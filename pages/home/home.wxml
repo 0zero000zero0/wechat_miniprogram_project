@@ -19,8 +19,8 @@
             <image src="../image/审核.png" />
             <text>审核记录</text>
         </view>
-        <view class="grid-item" style="background-image:url('../image/13.png');" bind:tap="feedback">
-            <image src="../image/反馈.png" />
+        <view class="grid-item" style="background-image:url('../image/13.png');" >
+            <image src="../image/反馈.png" bind:tap="handleNavigate" data-pageid="feedback"/>
             <text>反馈</text>
         </view>
     </view>

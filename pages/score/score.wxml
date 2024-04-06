@@ -1,0 +1,22 @@
+<image src="../image/应用界面.png" class="background" />
+<scroll-view class="options-container">
+    <view class="score-option" bindtap="showImage" data-type="already" style="background-image: url(../image/2.png);">
+        <text>已评分</text>
+    </view>
+
+    <view class="score-option" bindtap="showImage" data-type="notalready" style="background-image: url(../image/2.png);">
+        <text>未评分</text>
+    </view>
+</scroll-view>
+
+
+<scroll-view scroll-x="true" class="score-container" wx:if="{{show}}">
+    <block wx:for="{{imagesToRate}}" wx:key="fileID">
+        <view class="image-item">
+            <image src="{{item.fileID}}" mode="aspectFit" />
+            <input type="text" placeholder="请输入评分" data-image-id="{{item._id}}" bindinput="inputScore" />
+<button data-image-id="{{item._id}}" bindtap="submitScore">提交评分</button>
+
+        </view>
+    </block>
+</scroll-view>

@@ -6,27 +6,32 @@
 <view class="info" style="background-image:url('../image/16.png');">
     <image class="Avatar" src="{{userInfo.avatarUrl}}" />
     <view class='info-container'>
-        <text>姓名:  {{userInfo.nickName}}</text>
-        <text>地址:  {{userInfo.addr}}</text>
+        <text>姓名: {{userInfo.nickName}}</text>
+        <text>地址: {{userInfo.addr}}</text>
     </view>
 
     <scroll-view scroll-y="true" class="user-option">
-        <view  class="user-item">
+        <view class="user-item">
             <image src="../image/20.png" />
             <text>服 务</text>
         </view>
 
-        <view  class="user-item">
+        <view class="user-item">
             <image src="../image/20.png" />
             <text>监 管</text>
         </view>
 
-        <view  class="user-item">
+        <view wx:if="{{!userInfo.isAdmin}}" class="user-item">
             <image src="../image/20.png" />
             <text>客 服</text>
         </view>
+        <view wx:else class="user-item"  bind:tap="handleNavigate" data-pageid="score">
+            <text>打 分</text>
+            <image src="../image/20.png" />
+        </view>
 
-        <view  class="user-item">
+
+        <view class="user-item">
             <image src="../image/20.png" />
             <text>设 置</text>
         </view>
@@ -36,12 +41,12 @@
 
 
 <view class="option" style="left:12%">
-    <image src="../image/3.png" bind:tap="handleNavigate" data-pageid="home"/>
+    <image src="../image/3.png" bind:tap="handleNavigate" data-pageid="home" />
 
 </view>
 <view class="option" style="left:42%">
-    <image src="../image/4.png" bind:tap="handleNavigate" data-pageid="feedback"/>
+    <image src="../image/4.png" bind:tap="handleNavigate" data-pageid="feedback" />
 </view>
 <view class="option" style="left:72%">
-    <image src="../image/5.png" bind:tap="handleNavigate" data-pageid="user"/>
+    <image src="../image/5.png" bind:tap="handleNavigate" data-pageid="user" />
 </view>

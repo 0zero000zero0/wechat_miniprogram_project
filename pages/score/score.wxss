@@ -1,0 +1,45 @@
+.options-container {
+    display: flex;
+    flex-direction: row;
+    /* 子元素按行排列 */
+    white-space: nowrap;
+    /* 防止子元素换行 */
+    overflow-x: scroll;
+    /* 允许水平滚动 */
+}
+
+.score-option {
+    display: inline-block;
+    align-items: center;
+    /* 垂直居中子元素 */
+    justify-content: center;
+    /* 水平居中子元素 */
+    text-align: center;
+    height: 30%;
+    width: 40%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 5%;
+    margin-left: 5%;
+    /* 选项之间的间距 */
+}
+.score-container{
+    position:relative;
+    top: 10%;
+    left: 5%;
+    height: 80%;
+}
+.image-item{
+    height: 40%;
+    width: 100%;
+}
+.score-option text {
+    font-size: 5vw;
+    /* 根据容器宽度的百分比来设置字体大小 */
+    color: white;
+    /* 文字颜色设置为白色 */
+    text-align: center;
+    /* 文字居中 */
+    width: 100%;
+    /* 文字占据整个选项宽度 */
+}
