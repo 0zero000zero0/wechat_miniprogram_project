@@ -1,5 +1,10 @@
 Page({
     onLoad() {},
+    onReady(){
+      wx.setNavigationBarTitle({
+        title: '小智·大治',
+      })  
+    },
     //退出登录
     quit() {
         this.setData({

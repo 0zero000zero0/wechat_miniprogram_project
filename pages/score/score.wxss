@@ -25,47 +25,36 @@
 }
 
 .score-container {
-    position: relative;
+    position: absolute;
     top: 10%;
     left: 5%;
-    height: 80%;
+    width: 90%;
+    /* 修改为宽度占据整个屏幕的90% */
+    height: 60%;
+    white-space: nowrap;
+    /* 防止子元素换行 */
+    overflow-x: auto;
+    /* 开启水平滚动 */
+    overflow-y: hidden;
+    /* 隐藏垂直滚动条 */
 }
 
 .image-item {
     color: white;
-    display: flex;
-    /* 使用 Flex 布局 */
-    flex-direction: column;
-    /* 子元素垂直排列 */
-    align-items: center;
-    /* 子元素水平居中 */
-    justify-content: center;
-    /* 子元素垂直居中 */
-    height: 40%;
-    /* width: 100%; */
-    margin-bottom: 5%;
-    margin-right: 10%;
+    display: inline-block;
+    /* 修改为行内块元素，使其水平排列 */
+
+    vertical-align: top;
+    /* 顶部对齐 */
+    width: 40%;
+    /* 调整每个项目的宽度 */
+    margin-right: 80%;
+    /* 调整项目之间的右边距 */
+    margin-bottom: 0;
+    /* 取消底部边距 */
 }
 
-.image-item image {
-    width: 60%;
-    /* 图片宽度为容器宽度的 80% */
-    height: 30vh;
-    /* 高度自适应，保持图片比例 */
-    margin-top: 5%;
-    margin-bottom: 5%;
-    /* 图片与输入框之间的间隔 */
-}
 
-.image-item input {
-    text-align: center;
-    font-size: 150%;
-   text-emphasis-color: white; 
-    width: 60%;
-    /* 输入框宽度 */
-    height: 15%;
-    /* 输入框高度，根据需要调整 */
-}
 
 
 .score-option text {
@@ -79,9 +68,40 @@
     /* 文字占据整个选项宽度 */
 }
 
-.submitAll
-{
+.submitAll {
     position: absolute;
     bottom: 5%;
     left: 25%;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-buttons {
+    display: grid;
+    /* flex-direction: row; */
+    justify-content: space-around;
+    align-items: center;
+    margin: 20rpx 0;
+}
+
+.score-buttons button {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 20rpx 0;
 }

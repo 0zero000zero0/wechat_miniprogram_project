@@ -62,7 +62,11 @@ Page({
     onReachBottom() {
 
     },
-
+    onReady(){
+        wx.setNavigationBarTitle({
+          title: '反馈',
+        })  
+      },
     /**
      * 用户点击右上角分享
      */
