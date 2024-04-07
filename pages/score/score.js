@@ -1,106 +1,115 @@
+const app = getApp(); // 获取App实例
 Page({
     data: {
-      imagesToRate: [],
-      currentImage: {},
-      currentIndex: 0
+        imagesToRate: [],
+        currentImage: {},
+        currentIndex: 0,
+        userInfo: {}
     },
-  
+
     onLoad() {
         this.getImages()
         this.setData({
-          currentImage: {
-            scores: [0, 0, 0, 0]
-          }
+            currentImage: {
+                scores: [0, 0, 0, 0]
+            },
+            userInfo: getApp().globalData.userInfo
         })
-      },
-  
+    },
+
     getImages() {
-      const db = wx.cloud.database()
-      db.collection('images').where({
-        score: -1,
-      }).limit(10).get().then(res => {
-        this.setData({
-          imagesToRate: res.data
+        const db = wx.cloud.database()
+        db.collection('images').where({
+            score: -1,
+            _openid: 'onVes61IMVBVDKzZogmo6P1xM8K0'
+        }).limit(10).get().then(res => {
+            if (res.data.length === 0) {
+                wx.showToast({
+                    title: '无可评分图片',
+                    icon: 'none'
+                })
+                return
+            }
+            this.setData({
+                imagesToRate: res.data
+            })
+            this.setCurrentImage()
+        }).catch(err => {
+            wx.showToast({
+                title: '获取图片失败',
+                icon: 'none'
+            })
         })
-        this.setCurrentImage()
-      })
     },
-  
+
     setCurrentImage() {
-      const images = this.data.imagesToRate
-      const currentIndex = this.data.currentIndex
-      this.setData({
-        currentImage: images[currentIndex]
-      })
+        const images = this.data.imagesToRate
+        const currentIndex = this.data.currentIndex
+        this.setData({
+            currentImage: images[currentIndex]
+        })
     },
-  
+
     onScore(event) {
         const score = event.currentTarget.dataset.score
         const images = this.data.imagesToRate
         const currentIndex = this.data.currentIndex
         const currentImage = images[currentIndex]
-      
-        if (!currentImage.scores) {
-          currentImage.scores = [0, 0, 0, 0]
-        }
-      
-        // 更新图片的评分
-        currentImage.scores[score] += 1
-      
+
+        console.info(getApp().globalData.userInfo)
+
         // 更新数据库中的评分
         const db = wx.cloud.database()
         db.collection('images').doc(currentImage._id).update({
-          data: {
-            scores: currentImage.scores
-          }
+            data: {
+                score: score,
+                adminId: this.data.userInfo._id
+            }
         })
-      
-        // 计算当前图片的平均评分
-        let totalScore = 0
-        for (let i = 0; i < currentImage.scores.length; i++) {
-          totalScore += i * currentImage.scores[i]
-        }
-        const averageScore = totalScore / currentImage.scores.reduce((a, b) => a + b)
-      
+
         // 更新页面数据
         this.setData({
-          [`imagesToRate[${currentIndex}].averageScore`]: averageScore,
-          currentIndex: currentIndex + 1
+            currentIndex: currentIndex + 1
         })
-      
+
         // 切换到下一张图片
         if (currentIndex < images.length - 1) {
-          this.setCurrentImage()
-        } else {
-          // 显示所有图片的平均评分
-          let totalAverageScore = 0
-          for (let image of images) {
-            totalAverageScore += image.averageScore
-          }
-          wx.showToast({
-            title: `所有图片的平均评分：${totalAverageScore / images.length}`
-          })
+            this.setCurrentImage()
         }
-      },
-  
-    onPrev() {
-      const currentIndex = this.data.currentIndex
-      if (currentIndex > 0) {
-        this.setData({
-          currentIndex: currentIndex - 1
-        })
-        this.setCurrentImage()
-      }
     },
-  
-    onNext() {
-      const images = this.data.imagesToRate
-      const currentIndex = this.data.currentIndex
-      if (currentIndex < images.length - 1) {
-        this.setData({
-          currentIndex: currentIndex + 1
+    showAlready() {
+        // 获取已评分图片的列表
+        const db = wx.cloud.database()
+        db.collection('images').where({
+            score: {
+                $ne: -1
+            }
+        }).get().then(res => {
+            console.info(res)
+            this.setData({
+                imagesToRate: res.data
+            })
+            this.setCurrentImage()
         })
-        this.setCurrentImage()
-      }
+    },
+    onPrev() {
+        const currentIndex = this.data.currentIndex
+        if (currentIndex > 0) {
+            this.setData({
+                currentIndex: currentIndex - 1
+            })
+            this.setCurrentImage()
+        }
+    },
+
+    onNext() {
+        const images = this.data.imagesToRate
+        const currentIndex = this.data.currentIndex
+        if (currentIndex < images.length - 1) {
+            this.setData({
+                currentIndex: currentIndex + 1
+            })
+            this.setCurrentImage()
+        }
     }
-  })
+})

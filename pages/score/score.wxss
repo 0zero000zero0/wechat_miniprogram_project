@@ -88,14 +88,21 @@
 }
 
 .score-buttons {
-    display: grid;
-    /* flex-direction: row; */
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 20rpx 0;
+    margin: 20rpx;
 }
-
+.score-txt{
+    position: absolute;
+    font-size: 200%;
+    top: 50%;
+    color: white    ;
+}
 .score-buttons button {
+    margin-top: 100rpx;
+    width: 40%;
     border: 1px solid #ccc;
     text-align: center;
 }
