@@ -1,0 +1,11 @@
+<image src="../image/应用界面.png" class="background" />
+<image src="./img/header.png" class="headerx" />
+<text style="position: absolute;top: 160rpx;left: 70rpx;font-size: 160%;  color: white;">类型</text>
+<view class="chooses">
+  <image src="./img/chooseClass.png" />
+  <text>治厕</text>
+</view>
+
+<view class="main">
+<image src="./img/background.png" class="main-background"/>
+</view> 

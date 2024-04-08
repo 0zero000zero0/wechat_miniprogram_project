@@ -12,6 +12,53 @@
 }
 
 .header {
+  position: absolute;
+  top: 50rpx;
+  left: 10rpx;
+  height: 90rpx;
+  width: 500rpx;
+}
+
+.chooses {
+  position: absolute;
+  top: 160rpx;
+  left: 180rpx;
+  color: white;
+  height: 80rpx;
+  width: 300rpx;
+}
+
+.chooses text {
+  position: absolute;
+  top: 10rpx;
+  left: 90rpx;
+  font-size: 40rpx;
+}
+
+.chooses image {
+  position: absolute;
+  color: white;
+  height: 80rpx;
+  width: 280rpx;
+}
+
+.main {
+  position: absolute;
+  top: 250rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  height: 800rpx;
+  width: 660rpx;
+  opacity: 1;
+}
+.main-background{
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  height: 100%;
+  width: 100%;
+}
+.header {
     position: absolute;
     top: 0%;
     left: 0%;

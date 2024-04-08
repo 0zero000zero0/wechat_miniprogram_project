@@ -1,24 +1,24 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/user/user",
-        "pages/toilets/toilets",
-        "pages/feedback/feedback",
-        "pages/home/home",
-        "pages/logs/logs",
-        "pages/main/main",
-        "pages/score/score",
-        "pages/uploadImage/uploadImage",
-        "pages/photo/photo"
-    ],
-    
-    "window": {
-        "navigationBarTextStyle": "white",
-        "navigationBarTitleText": "小智·大治",
-        "navigationBarBackgroundColor": "#011C35"
-    },
-    "style": "v2",
-    "componentFramework": "glass-easel",
-    "sitemapLocation": "sitemap.json",
-    "lazyCodeLoading": "requiredComponents"
+  "pages": [
+    "pages/index/index",
+    "pages/submitImage/submitImage",
+    "pages/user/user",
+    "pages/toilets/toilets",
+    "pages/feedback/feedback",
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/main/main",
+    "pages/score/score",
+    "pages/uploadImage/uploadImage",
+    "pages/photo/photo"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小智·大治",
+    "navigationBarBackgroundColor": "#011C35"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }
