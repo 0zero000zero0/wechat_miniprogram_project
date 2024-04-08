@@ -1,0 +1,84 @@
+.main {
+    position: absolute;
+    top: 300rpx;
+    height: 1000rpx;
+    width: 750rpx;
+    opacity: 1;
+}
+
+.main-background {
+    position: absolute;
+    top: 0rpx;
+    left: 0rpx;
+    height: 100%;
+    width: 100%;
+}
+
+.chooses {
+    position: absolute;
+    top: 180rpx;
+    left: 180rpx;
+    color: white;
+    height: 80rpx;
+    width: 300rpx;
+}
+
+.chooses text {
+    position: absolute;
+    top: 10rpx;
+    left: 90rpx;
+    font-size: 40rpx;
+}
+
+
+
+.chooses image {
+    position: absolute;
+    color: white;
+    top: 0rpx;
+    height: 80rpx;
+    width: 280rpx;
+}
+
+.selected {
+    position: relative;
+    color: white;
+    font-size: 50rpx;
+    text-align: center;
+}
+
+
+.preview-container {
+    position: absolute;
+    display: flex;
+    flex-flow: row;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.block {
+    display: inline-block;
+    color: white;
+    width: 40%;
+    height: 40%;
+    font-size: 150%;
+    text-align: center;
+    margin: 20rpx;
+}
+
+.block image {
+    width: 80%;
+    height: 80%;
+}
+
+.preview-img {
+    position: relative;
+    height: 30%;
+    width: 40%;
+    margin-right: 10%;
+    margin-top: 10%;
+}

@@ -4,7 +4,7 @@
         <text>已评分</text>
     </view>
 
-    <view class="score-option" bindtap="onNext" style="background-image: url(../image/2.png);">
+    <view class="score-option" bindtap="getImages" style="background-image: url(../image/2.png);">
         <text>未评分</text>
     </view>
 
@@ -13,7 +13,7 @@
 <view class="container">
     <view class="image-container">
         <image src="{{currentImage.fileID}}" />
-        <text wx:if="{{currentImage.score!=-1}}" class='score-txt'>已评分:{{currentImage.score}}</text>
+        <text wx:if="{{currentImage.score!=-1}}" class='score-txt'>类型:{{currentImage.type}} 已评分:{{currentImage.score}}</text>
     </view>
     <view class="score-buttons">
         <button type="default" data-score="0" bindtap="onScore">0</button>

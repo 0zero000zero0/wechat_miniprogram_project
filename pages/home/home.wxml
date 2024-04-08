@@ -16,7 +16,7 @@
     </view>
     <view class="grid-container">
         <view class="grid-item" style="background-image:url('../image/13.png');">
-            <image src="../image/审核.png" />
+            <image src="../image/审核.png" bind:tap="goToAuditRecords"/>
             <text>审核记录</text>
         </view>
         <view class="grid-item" style="background-image:url('../image/13.png');" >

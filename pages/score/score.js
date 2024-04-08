@@ -23,6 +23,7 @@ Page({
             score: -1,
             _openid: 'onVes61IMVBVDKzZogmo6P1xM8K0'
         }).limit(10).get().then(res => {
+            console.log(res)
             if (res.data.length === 0) {
                 wx.showToast({
                     title: '无可评分图片',
@@ -55,35 +56,38 @@ Page({
         const images = this.data.imagesToRate
         const currentIndex = this.data.currentIndex
         const currentImage = images[currentIndex]
-
-        console.info(getApp().globalData.userInfo)
-
         // 更新数据库中的评分
-        const db = wx.cloud.database()
-        db.collection('images').doc(currentImage._id).update({
-            data: {
-                score: score,
-                adminId: this.data.userInfo._id
+        if (currentImage != null) {
+            const db = wx.cloud.database()
+
+            db.collection('images').doc(currentImage._id).update({
+                data: {
+                    score: score,
+                    adminId: this.data.userInfo._id
+                }
+            })
+            // 更新页面数据
+            this.setData({
+                currentIndex: currentIndex + 1
+            })
+            // 切换到下一张图片
+            if (currentIndex < images.length - 1) {
+                this.setCurrentImage()
             }
-        })
-
-        // 更新页面数据
-        this.setData({
-            currentIndex: currentIndex + 1
-        })
-
-        // 切换到下一张图片
-        if (currentIndex < images.length - 1) {
-            this.setCurrentImage()
+        } else {
+            wx.showToast({
+                title: '无可评分图片',
+                icon: 'none'
+            })
         }
     },
     showAlready() {
         // 获取已评分图片的列表
         const db = wx.cloud.database()
+        const _ = db.command
         db.collection('images').where({
-            score: {
-                $ne: -1
-            }
+            score: _.neq(-1),
+            _openid: 'onVes61IMVBVDKzZogmo6P1xM8K0'
         }).get().then(res => {
             console.info(res)
             this.setData({

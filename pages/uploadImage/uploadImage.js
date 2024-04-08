@@ -1,10 +1,12 @@
 Page({
     data: {
         imageList: [], // 保存选中的图片
-        pageId: 'uploadImage'
+        pageId: 'uploadImage',
+        types: ['治厕', '治风', '治水', '治垃圾'],
+        type_index: 0
     },
     onLoad: function (option) {
-        
+
         const eventChannel = this.getOpenerEventChannel();
         // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
         eventChannel.on('acceptDataFromOpenerPage', (data) => {
@@ -15,7 +17,12 @@ Page({
             });
         });
     },
-
+    bindPickerChange: function (e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            type_index: e.detail.value
+        })
+    },
     submitImages() {
         const that = this;
         // 显示上传中的提示
@@ -40,7 +47,6 @@ Page({
         Promise.all(uploadPromises).then(res => {
             // 所有图片上传成功
             const fileIDs = res.map(uploadResult => uploadResult.fileID); // 获取所有图片的云文件ID
-            debugger
             // 对每个文件创建单独记录
             const uploadTasks = fileIDs.map(fileID => {
                 return db.collection('images').add({
@@ -48,7 +54,8 @@ Page({
                         fileID: fileID,
                         customerId: userId, // 使用前面获取的用户ID
                         score: -1, // 默认分数为-1
-                        adminId: "" // 默认打分管理员为空
+                        adminId: "", // 默认打分管理员为空,
+                        type:this.data.types[this.data.type_index]
                     }
                 });
             });

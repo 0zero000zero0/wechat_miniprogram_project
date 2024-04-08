@@ -7,14 +7,19 @@ Page({
      */
     data: {
         uploadedImages: [],
-        pageId:'home'
+        pageId: 'home'
     },
-  
-    handleNavigate: function(e) {
+
+    handleNavigate: function (e) {
         const targetPageId = e.currentTarget.dataset.pageid; // 假设通过data-pageid传入目标页面ID
         console.info(targetPageId)
         app.navigateToPage(targetPageId); // 调用全局跳转方法
-      },
+    },
+    goToAuditRecords() {
+        wx.navigateTo({
+          url: '/pages/AuditRecords/AuditRecords',
+        })
+    },
     // 发起跳转的页面代码片段
     goToUploadImage() {
         wx.chooseMedia({

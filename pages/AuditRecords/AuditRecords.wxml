@@ -1,7 +1,10 @@
+<!--pages/home/home.wxml-->
 <image src="../image/应用界面.png" class="background" />
-<image src="./img/header.png" class="header" />
-<text style="position: absolute;top: 160rpx;left: 70rpx;font-size: 160%;  color: white;">类型</text>
-<view class="chooses" bindchange="bindPickerChange">
+<image class="header" src="../image/1.png" />
+<text class="headertxt">农村五治监管平台</text>
+<text style="position: absolute;top: 180rpx;left: 70rpx;font-size: 160%;  color: white;">类型</text>
+
+<view class="chooses">
     <view class="selector">
         <picker mode="selector" range="{{types}}" value="{{type_index}}" bindchange="bindPickerChange" header-text="上传图片的类型" style="background-image: url(./img/chooseClass.png);">
             <view class="selected">{{types[type_index]}}</view>
@@ -13,9 +16,10 @@
 <view class="main">
     <image src="./img/background.png" class="main-background" />
     <scroll-view scroll-y="true" class="preview-container">
-        <block wx:for="{{imageList}}" wx:key="*this">
-            <image src="{{item}}" class="preview-img"></image>
-        </block>
+        <view wx:for="{{imageList}}" wx:key="*this" class="block">
+            <image src="{{item.fileID}}" class="preview-img"></image>
+            <text wx:if="{{item.score!=-1}}">已经评分:{{item.score}}</text>
+            <text wx:else>未评分</text>
+        </view>
     </scroll-view>
 </view>
-<button class="submit-btn" type="primary" bindtap="submitImages">提交</button>
